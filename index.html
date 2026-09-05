@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>To-Do List</title>
+<style>
+  /* the design for the to-do list page */
+  body {
+    background-image: url('https://lilymontero.com/nina3.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background: #2f5986;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  .container {
+    background: #f86d9b;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 800px;
+    min-height: 80vh;
+    box-sizing: border-box;
+  }
+  h1 {
+    text-align: center;
+    color: #fff0f5;
+  }
+  input {
+    width: 65%;
+    padding: 6px;
+    border: 1px solid #ff83ae;
+    border-radius: 6px;
+  }
+  button {
+    padding: 8px 12px;
+    background: #ffadca;
+    color: #ff1818;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+  }
+  li {
+    background: #f15291;
+    margin: 6px 0;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+  li span {
+    cursor: pointer;
+    color: #ffedf3;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>My To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a task here!">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+  </div>
+ 
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const text = input.value.trim();
+      if (text === "") return;
+      const li = document.createElement("li");
+      li.textContent = text;
+      const del = document.createElement("span");
+      del.textContent = "✕";
+      del.onclick = () => li.remove();
+      li.appendChild(del);
+      document.getElementById("taskList").appendChild(li);
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
